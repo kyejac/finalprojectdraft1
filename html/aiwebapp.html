@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Adventure Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0e1f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ffccf2;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #a61288;
+        }
+
+        main {
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .choice-btn {
+            background-color: #f9c2d9;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .choice-btn:hover {
+            background-color: #d694b0;
+        }
+
+        .message {
+            font-size: 20px;
+            margin: 20px auto;
+            width: 60%;
+        }
+
+        .image {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            border: 5px solid #ffccf2;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Princess Adventure Game</h1>
+    </header>
+    <main>
+        <div id="story">
+            <p class="message">The princess stands at the entrance of a magical forest. She must choose which path to take to save her kingdom. Will she go down the Sparkling Stream Path, venture into the Whispering Woods, or climb the Mystical Mountain?</p>
+            <img src="https://via.placeholder.com/400x200?text=Magical+Forest" alt="Magical Forest" class="image">
+            <button class="choice-btn" onclick="choosePath('stream')">Sparkling Stream</button>
+            <button class="choice-btn" onclick="choosePath('woods')">Whispering Woods</button>
+            <button class="choice-btn" onclick="choosePath('mountain')">Mystical Mountain</button>
+        </div>
+    </main>
+
+    <script>
+        function choosePath(choice) {
+            const storyDiv = document.getElementById('story');
+            let message;
+            let imageSrc;
+            let buttons = '';
+
+            if (choice === 'stream') {
+                message = `The princess follows the Sparkling Stream and encounters a magical bridge guarded by a riddle-asking troll. Will she solve the riddle or find another way around?`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Sparkling+Stream";
+                buttons = `<button class='choice-btn' onclick="solveObstacle('riddle')">Solve the Riddle</button>
+                          <button class='choice-btn' onclick="solveObstacle('detour')">Find a Detour</button>`;
+            } else if (choice === 'woods') {
+                message = `The princess ventures into the Whispering Woods and comes across a glowing portal guarded by a mysterious owl. Will she enter the portal or talk to the owl?`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Whispering+Woods";
+                buttons = `<button class='choice-btn' onclick="solveObstacle('portal')">Enter the Portal</button>
+                          <button class='choice-btn' onclick="solveObstacle('owl')">Talk to the Owl</button>`;
+            } else if (choice === 'mountain') {
+                message = `The princess climbs the Mystical Mountain and finds a storm brewing. She must either seek shelter in a cave or brave the storm. What will she do?`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Mystical+Mountain";
+                buttons = `<button class='choice-btn' onclick="solveObstacle('cave')">Seek Shelter</button>
+                          <button class='choice-btn' onclick="solveObstacle('storm')">Brave the Storm</button>`;
+            } else {
+                message = `The princess gets lost in her thoughts and must try again.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Try+Again";
+            }
+
+            storyDiv.innerHTML = `<p class='message'>${message}</p><img src='${imageSrc}' alt='${choice}' class='image'>${buttons}`;
+        }
+
+        function solveObstacle(choice) {
+            const storyDiv = document.getElementById('story');
+            let message;
+            let imageSrc;
+
+            if (choice === 'riddle') {
+                message = `The princess solves the riddle with her wit and crosses the bridge to find a magical artifact that saves her kingdom. Victory!`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Victory+Bridge";
+            } else if (choice === 'detour') {
+                message = `The princess takes a detour and discovers a hidden meadow with healing herbs for her people. The kingdom flourishes!`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Hidden+Meadow";
+            } else if (choice === 'portal') {
+                message = `The princess steps through the portal and finds herself in a peaceful realm where she learns secrets to bring peace to her kingdom.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Portal+Realm";
+            } else if (choice === 'owl') {
+                message = `The owl shares ancient wisdom, guiding the princess to a treasure that ensures her kingdom's prosperity.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Wise+Owl";
+            } else if (choice === 'cave') {
+                message = `The princess takes shelter in the cave and uncovers ancient carvings that teach her to protect her kingdom from future threats.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Ancient+Cave";
+            } else if (choice === 'storm') {
+                message = `The princess braves the storm and reaches the mountain's peak, where she finds a beacon of hope for her kingdom.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Mountain+Peak";
+            } else {
+                message = `The princess must try again.`;
+                imageSrc = "https://via.placeholder.com/400x200?text=Try+Again";
+            }
+
+            storyDiv.innerHTML = `<p class='message'>${message}</p><img src='${imageSrc}' alt='${choice}' class='image'>`;
+        }
+    </script>
+</body>
+</html>
+
